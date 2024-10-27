@@ -61,6 +61,7 @@ This project configures Slack with AWS SNS to push notifications to a Slack chan
 
 3. Create a test event:
    - Name the event and select **SNS Topic Notification**.
+   - Click on **Deploy** and it should return **status code 200**
 
    ![event_test](./slack_res/lambda_event.png)
 
