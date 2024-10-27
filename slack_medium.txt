@@ -1,0 +1,49 @@
+slack_medium
+
+# Slack_Sns_Integration
+
+Configuration of Slack with AWS SNS to push notification to the slack channel
+
+
+
+Create a new app by directing to the Slack api website (https://api.slack.com/apps)
+    
+    i) Click on "Create an App" and choose "From Scratch"
+
+    <image> </image>
+    
+    ii) Assign a name, choose the the appropriate Slack Workspace(Note; Makesure you already have a slack workspace else create a new one) and then create app.
+
+    <image> </image>
+
+    iii) Navigate to the "Incoming Webhooks", toggle  "Activate Incoming Webhooks" and Scroll down to "Add new Webhook to the Workplace" 
+
+    <image> </image>
+
+    iv) Choose the channel to publish the SNS notification (Create a channel in slack workspace to receive the push notification). 
+
+    <image> </image>
+
+    v) Copy the webhook URL to use it in the AWS lambda function  
+
+
+Create a AWS SNS topic(Amazon SNS can be used to send notifications to HTTP(S) endpoints such as Webhook URLs.)
+
+    i) Create an SNS Topic
+
+    <image> </image>
+
+Create a lambda Function
+
+    i) Create a lambda, assign "Function Name", Choose the runtime as "Python 3.10" 
+
+    ii) Once you’ve successfully constructed the Lambda Function, you’ll need to add some custom code to deliver the message to the destination. To send custom messages to a Slack channel, use the sample code provided below.
+
+    iii) Paste the "lambda_function.py" code in the code section of the created lambda function, click deploy 
+
+    iv) Create a new test event, assign a name and choose "SNS Topic Notification"  
+
+    v) Click the "Add trigger", select the "Trigger configuration" as "SNS" and choose the appropriate "SNS topic" 
+
+    vi)  Click on "test" to test the function and check for the received message in the slack channel 
+
